@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# Caloric Intake Calculator
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Project description
+
+This caloric intake calculator provides a user-friendly tool for individuals to determine an estimate of their appropriate caloric intake based on their weight management goals. Through the use of the Mifflin-St. Jeor equation and the user's activity level, the user is able to determine a caloric intake estimate to maintain, lose, or gain weight.
+
+---
 
 ## Available Scripts
 
