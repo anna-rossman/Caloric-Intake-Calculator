@@ -8,40 +8,22 @@ function App() {
 
   function handleClick(event) {
     event.preventDefault();
+
     setSubmitted(true);
-    if (event.target.value === 'cut') {
-      setGoal('Cut');
-    } else if (event.target.value === 'bulk') {
-      setGoal('Bulk');
-    } else {
-      setGoal('Maintenance');
-    }
+    setGoal(event.target.value);
   }
 
   function handleReset() {
     setSubmitted(submitted => !submitted);
+    setGoal();
   }
 
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello world
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
       <h1>Caloric Intake Calculator</h1>
-      <button type="button" value="cut" onClick={handleClick}>Cut</button>
-      <button type="button" value="maintenance" onClick={handleClick}>Maintenance</button>
-      <button type="button" value="bulk" onClick={handleClick}>Bulk</button>
+      <button style={{backgroundColor: goal === 'Cut' && 'lightgray'}} className="App-button" type="button" value="Cut" onClick={handleClick}>Cut</button>
+      <button style={{backgroundColor: goal === 'Maintenance' && 'lightgray'}} className="App-button" type="button" value="Maintenance" onClick={handleClick}>Maintenance</button>
+      <button style={{backgroundColor: goal === 'Bulk' && 'lightgray'}} className="App-button" type="button" value="Bulk" onClick={handleClick}>Bulk</button>
       {submitted && <Calculator goal={goal}/>}
       {submitted && <button type="reset" onClick={handleReset}>Reset all</button>}
     </div>

@@ -35,7 +35,8 @@ export default function ResultsUS(props) {
     return (
         <div>
             <p>
-                Calories recommended for {props.sex}: {caloricIntake(props)}
+                {(props.age !== undefined && props.sex !== undefined && props.height !== undefined && props.weight !== undefined) ? 
+                `Calories recommended for ${props.sex}: ${caloricIntake(props)}` : 'Please fill in empty fields.'}
             </p>
         </div>
     )
