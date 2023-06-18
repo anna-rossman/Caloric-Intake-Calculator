@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import ResultsUS from './resultsUS.js';
-import ResultsMetric from './resultsMetric.js';
+import CalculateResult from './calculateResult.js';
 
 export default function Calculator(props) {
     // TODO: condense into an object then change object state
@@ -40,8 +39,12 @@ export default function Calculator(props) {
                     <tr style={{alignContent: 'left'}}>
                         <td></td>
                         <td>
-                            <button style={{backgroundColor: units === 'US' && 'darkgray'}} type="button" value="US" onClick={handleClick}>US</button>
-                            <button style={{backgroundColor: units === 'Metric' && 'darkgray'}} type="button" value="Metric" onClick={handleClick}>Metric</button>
+                            <button style={{backgroundColor: units === 'US' && 'lightgray'}} type="button" value="US" onClick={handleClick}>
+                                US
+                            </button>
+                            <button style={{backgroundColor: units === 'Metric' && 'lightgray'}} type="button" value="Metric" onClick={handleClick}>
+                                Metric
+                            </button>
                         </td>
                     </tr>
                     
@@ -53,7 +56,7 @@ export default function Calculator(props) {
                         <td>
                             <input
                                 pattern="[0-9]*"
-                                style={{borderColor: (age < 18 || (submitted && age === undefined)) && 'red'}}
+                                style={{borderColor: (submitted && age === undefined) && 'red'}}
                                 type="number" 
                                 name="age" 
                                 id="age"
@@ -71,12 +74,22 @@ export default function Calculator(props) {
                         <td>
                             <div style={{display: 'inline-block', border: (submitted && sex === undefined) && '2px solid red'}} id="sex">
                                 <label htmlFor="male">
-                                    <input type="radio" name="sex" value="Male" id="male" onClick={(event) => setSex(event.target.value)} />
+                                    <input 
+                                    type="radio" 
+                                    name="sex" 
+                                    value="Male" 
+                                    id="male" 
+                                    onClick={(event) => setSex(event.target.value)} />
                                     Male
                                 </label>
                             
                                 <label htmlFor="female">
-                                    <input type="radio" name="sex" value="Female" id="female" onClick={(event) => setSex(event.target.value)} />
+                                    <input 
+                                        type="radio" 
+                                        name="sex" 
+                                        value="Female" 
+                                        id="female" 
+                                        onClick={(event) => setSex(event.target.value)} />
                                     Female
                                 </label>
                             </div>
@@ -159,7 +172,8 @@ export default function Calculator(props) {
                 </table>
             </form>
 
-            {submitted && (units === 'US' ? <ResultsUS age={age} sex={sex} height={height} weight={weight} activity={activity} goal={props.goal}/> : <ResultsMetric age={age} sex={sex} height={height} weight={weight} activity={activity} goal={props.goal}/>)}
+            {submitted && <CalculateResult age={age} sex={sex} height={height} weight={weight} activity={activity} goal={props.goal} units={units}/> }
+            
         </div>
     )
 }
